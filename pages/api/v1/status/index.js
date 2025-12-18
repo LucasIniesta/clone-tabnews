@@ -1,4 +1,3 @@
-import { version } from "react";
 import database from "/infra/database.js";
 
 async function status(req, res) {
