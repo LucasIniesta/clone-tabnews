@@ -29,7 +29,11 @@ function DatabaseStatus() {
     data.dependencies.database.opened_connections;
   const databaseMaxConnections = data.dependencies.database.max_connections;
 
-  const databaseInfo = (
+  if (isLoading && !data) {
+    return <div>{loading}</div>;
+  }
+
+  return (
     <>
       <p>Última atualização: {updatedAtText}</p>
       <div>Versão: {databaseVersion}</div>
@@ -37,6 +41,4 @@ function DatabaseStatus() {
       <div>Conexões máximas: {databaseMaxConnections}</div>
     </>
   );
-
-  return <div>{isLoading ? loading : databaseInfo}</div>;
 }
